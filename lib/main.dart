@@ -20,10 +20,9 @@ class MyApp extends StatelessWidget {
 
 
 class RandomWordsState extends State<RandomWords> {
-  final List<WordPair> _suggestions = <WordPair>[];
-  final Set<WordPair> _saved = new Set<WordPair>[];
-  final TextStyle _biggerFont = const TextStyle(fontSize: :18.0);
-
+  final List<WordPair> _suggestions = [];
+  final Set<WordPair> _saved = {};
+  final TextStyle _biggerFont = const TextStyle(fontSize:18.0);
 
   @override
   Widget build(BuildContext context) {
@@ -112,13 +111,13 @@ class RandomWords extends StatefulWidget {
 }
 
 
-getContacts()  async  {
-var  httpClient  =  new  HttpClient();
-var  uri  =  new  Uri.https('api.github.com',  '/users/1');
-var  request  =  await httpClient.getUrl(uri);
-var  response  =  await request.close();
-var  responseBody  =  await response.transform(UTF8.decoder).join();
-return  responseBody;
-}
+// getContacts()  async  {
+// var  httpClient  =  new  HttpClient();
+// var  uri  =  new  Uri.https('api.github.com',  '/users/1');
+// var  request  =  await httpClient.getUrl(uri);
+// var  response  =  await request.close();
+// var  responseBody  =  await response.transform(UTF8.decoder).join();
+// return  responseBody;
+// }
 
 
