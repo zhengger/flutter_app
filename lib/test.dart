@@ -1,13 +1,17 @@
 
+// factory constructor: Logger 2019-03-19 17:51:18
 void main () {
-  var lg1 =Logger("hello");
+  var lg1 = Logger("hello");
   print(lg1);
   print(Logger._cache);
   print(Logger._internal("world"));
   print(Logger._cache);
   var lg2 = Logger("world");
   print(Logger._cache);
-
+  var lg3 = Logger._internal("!!!");
+  print(Logger._cache);
+  var lg4 = Logger("!!!");
+  print(Logger._cache);
 }
 
 String pri (){
