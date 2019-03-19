@@ -1,4 +1,44 @@
+/*
+//Invoking a non-default superclass constructor
+class Person {
+  String firstName;
+  Person.fromJson (Map data) {
+    print('in Person');
+  }
+/*  
+  Person(this.firstName);
+  ie...so it's a constructor with an argument.
+  Person(String firstName) {
+    this.firstName = firstName;
+  }
+*/ 
+  Person(){
+    print("No Argument");
+  }
+//an unnamed, no-argument constructor
+}
 
+class Employee extends Person {
+  // Person does not have a default constructor, you must call super.fromJson(data).
+  // Employee.fromJson(Map data) : super.fromJson(data) {
+  Employee.fromJson(Map data) {
+    print('in Employee');
+  }
+}
+
+main() {
+  // var emp = Employee.fromJson({});
+  var emp = Person();
+  // if (emp is Person) {
+  //   // Type check
+  //   emp.firstName = 'Bob';
+  // }
+  (emp as Person).firstName = 'Bob';
+
+}
+*/
+
+/*
 // factory constructor: Logger 2019-03-19 17:51:18
 void main () {
   var lg1 = Logger("hello");
@@ -39,6 +79,7 @@ class Logger {
     if (!mute) print(msg);
   }
 }
+*/
 
 /* 2019-03-18 18:13:08
 void main() {
