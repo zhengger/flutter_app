@@ -1,17 +1,108 @@
 /*
+//Mixins are a way of reusing a class’s code in multiple class hierarchies.
+//To implement a mixin, creat a class tnat extends Object and declares on constructors.
+//Unless you want your mixin to be usable as a regular class, use the mixin keyword instead of class.
+
+mixin Musical on Person {
+  bool canPlayPiano = false;
+  bool canCompose = false;
+  bool canConduct = false;
+
+  void entertainMe() {
+    if (canPlayPiano) {
+      print("playing piano");
+    } else if (canConduct) {
+      print('waving hands');
+    } else {
+      print('humming to self');
+    } 
+  }
+}
+
+class Person {
+  var _name;
+  Person(this._name);
+  String greet(String who) => 'Hello, $who. I am $_name';
+}
+
+class Maestro extends Person with Musical {
+    Maestro(String maestroName): super(maestroName) {
+    _name = maestroName;
+    canConduct = true;
+  }
+}
+
+void main(List<String> args) {
+  var maestro =Maestro("Sharp");
+  maestro.entertainMe();
+}
+*/
+
+
+/*
+//Lexical closures: A closure is a function object that has access to variables in its lexical scope, even when the function is used outside of its original scope which is defined by {}.
+Function makeAdder(num addBy) {
+  return (num i) => addBy + i;
+}
+
+void main () {
+  var add2 = makeAdder(2);
+  var add4 = makeAdder(4);
+  print(add2(4));
+  print(add4(8));
+}
+
+
+
+//override
+
+//implicit interfaces
+class Person {
+  final _name;
+  Person(this._name);
+  String greet(String who) => 'Hello, $who. I am $_name';
+}
+
+class Impostor implements Person{
+  var _age;
+  get _name => '';
+  Impostor(this._age);
+  String greet(String who) => 'Hi $who. Do you know who I am?';
+  @override  //overring noSuchMethod
+  noSuchMethod(Invocation invocation) => 'Got the ${invocation.memberName} with arguments ${invocation.positionalArguments} 10086';
+}
+ 
+ 
+String greetBob(Person person) => person.greet('Bob');
+
+void main() {
+  print(greetBob(Person('Kathy')));
+  print(greetBob(Impostor(8)));
+  var im =Impostor(5);
+  // im._age = 7;
+  print(im._age);
+}
+
+
+//Methods: instance methods, getter and setter, abstrct classes, abstract methods,
+//factory constructor
+// constant constructor
+
+
+
 //Invoking a non-default superclass constructor
 class Person {
   String firstName;
   Person.fromJson (Map data) {
     print('in Person');
   }
-/*  
+  
   Person(this.firstName);
   ie...so it's a constructor with an argument.
   Person(String firstName) {
     this.firstName = firstName;
   }
-*/ 
+
   Person(){
     print("No Argument");
   }
